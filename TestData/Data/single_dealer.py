@@ -21,7 +21,7 @@ name_to_uid = {}
 
 #get a info of one group, using input as x, A, B, C
 def get_group_info(x,A,B,C):
-    fx=open(str(uid)+'_info_x.txt','w')
+    fx=open('./alldata/'+str(x)+'_info_x.txt','w')
     info=get_user_info_from_uid(x)
     if(info==''):
         fx.close()
@@ -30,7 +30,7 @@ def get_group_info(x,A,B,C):
     fx.close()
     print('Finish x!')
     ###
-    fA=open(str(uid)+'_info_A.txt','w')
+    fA=open('./alldata/'+str(x)+'_info_A.txt','w')
     for a in A:
         info=get_user_info_from_uid(a)
         if(info==''):
@@ -39,7 +39,7 @@ def get_group_info(x,A,B,C):
     fA.close()
     print('Finish A!')
     ###
-    fB=open(str(uid)+'_info_B.txt','w')
+    fB=open('./alldata/'+str(x)+'_info_B.txt','w')
     for b in B:
         info=get_user_info_from_uid(b)
         if(info==''):
@@ -48,7 +48,7 @@ def get_group_info(x,A,B,C):
     fB.close()
     print('Finish B!')
     ###
-    fC=open(str(uid)+'_info_C.txt','w')
+    fC=open('./alldata/'+str(x)+'_info_C.txt','w')
     for c in C:
         info=get_user_info_from_uid(c)
         if(info==''):

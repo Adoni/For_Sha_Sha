@@ -96,6 +96,9 @@ int main(int argc, char** argv)
     numA=getDataFromFile(argv[2], A);
     numB=getDataFromFile(argv[3], B);
     numC=getDataFromFile(argv[4], C);
-    cout<<cal_W()<<endl;
+    float W=cal_W();
+    ofstream fout;
+    fout.open("W.txt",ios::app);
+    fout<<W<<endl;
     return 0;
 }
