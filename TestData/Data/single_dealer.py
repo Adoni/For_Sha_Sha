@@ -21,36 +21,42 @@ name_to_uid = {}
 
 #get a info of one group, using input as x, A, B, C
 def get_group_info(x,A,B,C):
-    fx=open('info_x.txt','w')
+    fx=open(str(uid)+'_info_x.txt','w')
     info=get_user_info_from_uid(x)
     if(info==''):
+        fx.close()
         return False
     fx.write(info+'\n')
     fx.close()
+    print('Finish x!')
     ###
-    fA=open('info_A.txt','w')
+    fA=open(str(uid)+'_info_A.txt','w')
     for a in A:
         info=get_user_info_from_uid(a)
         if(info==''):
             continue
         fA.write(info+'\n')
     fA.close()
+    print('Finish A!')
     ###
-    fB=open('info_B.txt','w')
+    fB=open(str(uid)+'_info_B.txt','w')
     for b in B:
         info=get_user_info_from_uid(b)
         if(info==''):
             continue
         fB.write(info+'\n')
     fB.close()
+    print('Finish B!')
     ###
-    fC=open('info_C.txt','w')
+    fC=open(str(uid)+'_info_C.txt','w')
     for c in C:
         info=get_user_info_from_uid(c)
         if(info==''):
             continue
         fC.write(info+'\n')
     fC.close()
+    print('Finish C!')
+    return True
 
 
 def get_user_tag(uid):
@@ -61,7 +67,7 @@ def get_user_tag(uid):
     try:
         raw_json = urlopen(complete_url).read().decode('utf8')
     except Exception as e:
-        ##print (e)
+        return ''
         print ('exception!\n' + complete_url)
         time.sleep(sleeptime)
         try:
@@ -86,7 +92,6 @@ def get_user_tag(uid):
         ans=ans+' '+tag
     return ans
 def get_user_info_from_uid(uid):
-    print(uid)
     ans=''
     base_url = 'https://api.weibo.com/2/users/show.json?'
     complete_url = base_url + 'uid=' + uid + '&' + 'access_token=' + access_token
@@ -95,6 +100,7 @@ def get_user_info_from_uid(uid):
         raw_json = urlopen(complete_url).read().decode('utf8')
     except Exception as e:
         ##print (e)
+        return ''
         print ('exception!\n' + complete_url)
         time.sleep(sleeptime)
         try:

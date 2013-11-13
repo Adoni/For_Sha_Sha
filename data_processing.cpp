@@ -4,34 +4,31 @@
 #include <string>
 #include <math.h>
 #include "mysql.h"
-#define MaxN 1000
-#define MaxM 10
-#define MaxTags 100
+#define MaxA 400
+#define MaxB 200
+#define MaxC 1200
 
 using namespace std;
-long int N;
-int M, I=3, J=3, K=2;
-string data[MaxN][MaxM];
-string usertags[MaxN][MaxTags];//usertags[i][j] means the tag_j of user_i
-int tagLen[MaxTags];//means the number of tags of user_i.
+
+string x[6];
+string A[MaxA][6]
+string B[MaxA][6]
+string C[MaxA][6]
 
 //use splitAllTags to cut the tags in database(which is a string)to an array of tag
-void splitAllTags(string usertags[][MaxTags])
+void splitString(string S, char ch, string splits[])
 {
-    for(int i=0;i<N;i++)
+    int i=0;
+    int pos;
+    while((pos=S.find(ch))<S.length())
     {
-        int j=0;
-        string tags=data[i][7];
-        int pos;
-        while((pos=tags.find("\t "))<tags.length())
-        {
-            usertags[i][j]=tags.substr(0,pos);
-            tags=tags.substr(pos+1);
-            j++;
-        }
-        tagLen[i]=j;
+        splits[i]=S.substr(0,pos);
+        S=S.substr(pos+1);
+        i++;
     }
 }
+void getDataFromMySQL()
+{}
 int main(int argc, char** argv)
 {
     char root[]="root";
