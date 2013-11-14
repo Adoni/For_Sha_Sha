@@ -99,6 +99,7 @@ int main(int argc, char** argv)
     float W=cal_W();
     ofstream fout;
     fout.open("W.txt",ios::app);
-    fout<<W<<endl;
+    cout<<W<<endl;
+    fout.close();
     return 0;
 }
